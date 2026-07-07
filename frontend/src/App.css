@@ -1,0 +1,478 @@
+.navbar{
+  height: 100px;
+  width: 100%;
+  background-color: antiquewhite;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+.nav-div1{
+  background-size: cover;
+  position: relative;
+  height: 100%;
+  width: 100px;
+}
+.nav-div2{
+  /* margin-top: 10px; */
+  height: 100%;
+  width: 60%;
+}
+.menuItems{
+  height: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.categoryMenu{
+    position: relative;
+    cursor: pointer;
+}
+.categoryMenu:hover{
+  text-decoration: underline;
+}
+.dropdown{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 220px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    z-index: 1000;
+}
+.dropdown p{
+    padding: 10px;
+    margin: 0;
+}
+
+.dropdown p:hover{
+    background-color: #f3f3f3;
+}
+.dropDownItem{
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+.dropDownItem:hover{
+    background-color: #f3f3f3;
+}
+.menuItems a{
+  text-decoration: none;
+  color: black;
+}
+.menuItems a:hover{
+  text-decoration: underline;
+}
+.navLink:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+.nav-search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40%;
+    width: 100%;
+    /* background-color:#0F1111; */
+
+}
+#searchall{
+  height: 40px;
+  width: 60px;
+  background-color: #f3f3f3;
+  text-align: center;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border: none;
+  margin-bottom: 10px;
+}
+.searchplace{
+  height: 38px;
+  width: 100%;
+  border: none;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+
+}
+#searchicon{
+    height: 40px;
+  width: 50px;
+  background-color:darkgoldenrod;
+  color: #0F1111;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+
+}
+#searchall:hover{
+    background-color: darkgray;
+    color: black;
+}
+#searchicon:hover{
+    background-color: darkorange;
+    color:black;
+}
+.searchimage{
+  height: 200px;
+  width: 150px;
+  position: relative;
+  background-size: cover;
+  margin-left: 5px;
+}
+.nav-div3{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  width: 30%;
+}
+.nav-div3 i{
+  height: 100px;
+  width: 60px;
+  background-color: transparent;
+  border: black;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+#cart{
+    font-size: 2rem;
+}
+#wishlist{
+    font-size: 2rem;
+}
+#user{
+    font-size: 2rem;
+}
+.userProfileLink p{
+  color: black;
+  margin: 10px;
+}
+.userProfileLink Link{
+  text-decoration: none;
+}
+
+/*category book css*/
+.showCategoryBook{
+  height: 200px;
+  width: 100%;
+  background-color: #f3f3f3;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.scbookImage{
+  height: 90%;
+  width: 150px;
+  position: relative;
+  background-size: cover;
+}
+
+/* hero section*/
+
+.heroImage{
+  height: 300px;
+  width: 100%;
+  position: relative;
+  background-size: cover;
+}
+.heroSection{
+  height: 300px;
+  width: 50%;
+  
+}
+.bsr{
+  text-align: center;
+  font-size: 2rem;
+  padding-top: 15px;
+}
+.repeat{
+  text-align: center;
+  font-size: 2.4rem;
+}
+.punchline{
+  text-align: center;
+  font-size: 1.2rem;
+  padding-top: 5px;
+  font-style: italic;
+}
+.discount1{
+  font-size: 2.6rem;
+  text-align: center;
+}
+.discount2{
+  font-size: 3rem;
+  text-align: center;
+}
+.discount3{
+  font-size: 2rem;
+  text-align: center;
+}
+.leftArrow,
+.rightArrow{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(255,255,255,0.7);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+}
+.leftArrow{
+    left: 20px;
+}
+.rightArrow{
+    right: 20px;
+}
+
+/*selection section*/
+
+.selection{
+    height: 300px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    /* margin-top: 15px; */
+    padding-top: 25px;
+    margin-bottom: 20px;
+}
+.choose{
+    height: 300px;
+    width: 450px;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 1.2rem;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+}
+.choose:hover{
+  font-size: 4rem;
+  color: black;
+} 
+
+/*returnsection*/
+
+.returnSection{
+  height: 80px;
+  width: 100%;
+  position: relative;
+  background-size: cover;
+  border-radius: 1.2rem;
+  margin-top: 10px;
+}
+.returnHeading{
+  height: 100%;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: brown;
+}
+.returnHeading:hover{
+  text-decoration: underline;
+}
+
+/*Best Seller Section*/
+
+.bestSellerSection{
+  height: 550px;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.bestSellersHeading{
+  font-size: 2rem;
+}
+.bestSellersMain{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 10px;
+}
+.book{
+  height:350px;
+  width: 20%;
+}
+.bsBookImage{
+  height: 430px;
+  width:100%;
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.bookdetails{
+  margin-top: 5px;
+}
+
+/* why bookloop section*/
+
+.whyBookLoop{
+  height: 300px;
+  width: 100%;
+  position: relative;
+  background-size: cover;
+  border-radius: 1.2rem;
+}
+.whyHeading{
+  font-size: 2rem;
+  text-align: center;
+  padding-top: 20px;
+}
+.reasonbox{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.emptydiv{
+  width:40%;
+}
+.whyReasons{
+  margin-top: 15px;
+  font-size: 1.5rem;
+  padding-left: 40px;
+}
+
+/* News letter section*/
+
+.newsLetterSection{
+  height: 100px;
+  width: 100%;
+  border-radius: 1.2rem;
+  background-color: rgb(251, 251, 251);
+  margin-top: 10px;
+}
+.newsHeading{
+  font-size: 1.5rem;
+  text-align: center;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+.mailholder{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+.mailenter{
+  width:50%;
+  height: 20px;
+  border-radius: 0.5rem;
+}
+.suscribeButton{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5px;
+}
+.suscribeButton button{
+  border-radius: 7px;
+  background-color: rgb(232, 232, 78);
+}
+.suscribeButton button:hover{
+  background-color: rgb(218, 218, 82);
+}
+
+
+/*footer section*/
+
+.footerSection{
+  height: 300px;
+  width: 100%;
+  background-color: rgb(236, 228, 218);
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.footerlogo{
+  height: 300px;
+  width:300px;
+  position: relative;
+  background-size: cover;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+.contact{
+  height: 300px;
+  width: 60%;
+}
+.aboutusHeading{
+  font-size: 1.5rem;
+  padding-top: 20px;
+  font-style: oblique;
+  font-weight: bold;
+}
+.aboutus{
+  font-size: 1.05rem;
+}
+.footerSection span i{
+  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  padding-top: 20px;
+  color: black;
+}
+.footerSection span i:hover{
+  color:blue;
+}
+
+/* login user page*/
+.login{
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.loginuser{
+  height: 400px;
+  width: 400px;
+  text-align: center;
+  border: #0F1111;
+}
+.register{
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.registeruser{
+  height: 400px;
+  width: 400px;
+  text-align: center;
+  border: #0F1111;
+}
+
+.selectLink{
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
