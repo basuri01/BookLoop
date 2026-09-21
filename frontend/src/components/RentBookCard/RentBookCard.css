@@ -1,0 +1,69 @@
+.rentBookCard {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    cursor: pointer;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+    transition: 0.25s ease;
+}
+
+.rentBookCard:hover {
+    transform: translateY(-6px);
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+
+.rentBookImageContainer {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+}
+
+
+.rentBookImage {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: 0.3s ease;
+}
+
+
+.rentBookCard:hover .rentBookImage {
+    transform: scale(1.04);
+}
+
+
+.rentBookInfo {
+    padding: 18px;
+}
+
+
+.rentBookInfo h3 {
+    margin: 0;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    color: #222;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.rentBookInfo p {
+    margin-top: 8px;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    color: #222;
+}

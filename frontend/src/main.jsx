@@ -13,7 +13,9 @@ import LoginPage from './Pages/LoginPage.jsx'
 import RegisterPage from './Pages/RegisterPage.jsx'
 import SellBookPage from './Pages/SellBookPage.jsx'
 import RentBookPage from './Pages/RentBookPage.jsx'
+import RentMarketplacePage from "./Pages/RentMarketplacePage.jsx";
 import BuyBookPage from './Pages/BuyBookPage.jsx'
+import BookDetailsPage from './Pages/BookDetailsPage.jsx'
 
 const router= createBrowserRouter(
   createRoutesFromElements(
@@ -26,8 +28,10 @@ const router= createBrowserRouter(
       <Route path='login' element={<LoginPage/>}/>
       <Route path='register' element={<RegisterPage/>}/>
       <Route path='sell' element={<SellBookPage/>}/>
-      <Route path='rent' element={<RentBookPage/>}/>
+      <Route path='rent' element={<RentMarketplacePage/>}/>
+      <Route path='rent/form' element={<RentBookPage/>}/>
       <Route path='buy' element={<BuyBookPage/>}/>
+      <Route path='book/:bookId' element={<BookDetailsPage/>}/>
     </Route>
   )
 )

@@ -1,0 +1,44 @@
+.bookCard {
+    width: 100%;
+    cursor: pointer;
+    transition: transform 0.25s ease;
+}
+
+.bookCard:hover {
+    transform: translateY(-6px);
+}
+
+.bookImageContainer {
+    width: 100%;
+    height: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f3f3f3;
+}
+
+.bookImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.bookInfo {
+    padding-top: 12px;
+}
+
+.bookTitle {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.bookPrice {
+    margin: 6px 0 0;
+    font-size: 16px;
+    font-weight: 600;
+}

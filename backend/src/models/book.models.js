@@ -51,7 +51,12 @@ const bookSchema = new Schema(
             required: true
         },
         images: {
-            type: String
+            type: [String],
+            required: true
+        },
+        coverImage: {
+            type: String,
+            required: true
         },
         seller: {
             type: Schema.Types.ObjectId,

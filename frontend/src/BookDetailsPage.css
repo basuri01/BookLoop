@@ -1,0 +1,320 @@
+/* ================================
+   BOOK DETAILS PAGE
+================================ */
+
+.bookDetailsPage {
+    min-height: calc(100vh - 80px);
+    padding: 50px 7%;
+    background: #f8f7f4;
+}
+
+
+/* ================================
+   MAIN BOOK SECTION
+================================ */
+
+.bookDetailsContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 70px;
+    background: white;
+    padding: 45px;
+    border-radius: 24px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ================================
+   IMAGE
+================================ */
+
+.bookDetailsImageSection {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.bookDetailsImage {
+    width: 100%;
+    max-width: 380px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ================================
+   BOOK INFORMATION
+================================ */
+
+.bookDetailsInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.bookDetailsInfo h1 {
+    margin: 0;
+    font-size: 38px;
+    line-height: 1.2;
+    color: #222;
+}
+
+.bookDetailsAuthor {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #777;
+}
+
+
+/* ================================
+   PRICE
+================================ */
+
+.bookDetailsPrice {
+    margin-top: 25px;
+    font-size: 30px;
+    font-weight: 700;
+    color: #222;
+}
+
+
+/* ================================
+   BOOK DETAILS
+================================ */
+
+.bookDetailsFields {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.bookDetailsFields div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.bookDetailsFields span {
+    font-size: 13px;
+    color: #888;
+}
+
+.bookDetailsFields strong {
+    font-size: 16px;
+    color: #333;
+}
+
+
+/* ================================
+   DESCRIPTION
+================================ */
+
+.bookDescription {
+    margin-top: 30px;
+}
+
+.bookDescription h2 {
+    font-size: 21px;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.bookDescription p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #666;
+}
+
+
+/* ================================
+   ACTION BUTTONS
+================================ */
+
+.bookActions {
+    margin-top: 35px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.bookActions button {
+    border: none;
+    padding: 14px 22px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.bookActions button:hover {
+    transform: translateY(-2px);
+}
+
+
+/* Wishlist */
+
+.wishlistButton {
+    background: #f1f1f1;
+    color: #333;
+}
+
+
+/* Cart */
+
+.cartButton {
+    background: #e8e8e8;
+    color: #222;
+}
+
+
+/* Buy */
+
+.buyButton {
+    background: #222;
+    color: white;
+    min-width: 130px;
+}
+
+
+/* ================================
+   RENT SECTION
+================================ */
+
+.rentSection {
+    max-width: 1200px;
+    margin: 30px auto 0;
+    padding: 30px 40px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+}
+
+.rentSection h2 {
+    margin: 0 0 8px;
+    font-size: 23px;
+    color: #222;
+}
+
+.rentSection p {
+    margin: 0 0 10px;
+    color: #777;
+}
+
+.rentSection strong {
+    font-size: 22px;
+    color: #222;
+}
+
+.rentButton {
+    border: none;
+    background: #222;
+    color: white;
+
+    padding: 14px 28px;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.rentButton:hover {
+    transform: translateY(-2px);
+}
+
+
+/* ================================
+   LOADING / ERROR
+================================ */
+
+.bookDetailsMessage {
+    min-height: calc(100vh - 80px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 20px;
+    color: #666;
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+
+    .bookDetailsContainer {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        padding: 30px;
+    }
+
+    .bookDetailsImage {
+        max-width: 320px;
+        height: 430px;
+    }
+
+    .bookDetailsImageSection {
+        justify-content: center;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .bookDetailsPage {
+        padding: 25px 15px;
+    }
+
+    .bookDetailsContainer {
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    .bookDetailsInfo h1 {
+        font-size: 28px;
+    }
+
+    .bookDetailsFields {
+        grid-template-columns: 1fr;
+    }
+
+    .bookActions {
+        flex-direction: column;
+    }
+
+    .bookActions button {
+        width: 100%;
+    }
+
+    .rentSection {
+        padding: 25px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .rentButton {
+        width: 100%;
+    }
+
+}

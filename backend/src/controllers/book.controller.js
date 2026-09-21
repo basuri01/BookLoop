@@ -28,7 +28,8 @@ const listBookForSale = asyncHandler( async(req, res)=>{
     }
 
     let listingType= "sell";
-    if(listForRent){
+    const rentEnabled = listForRent === "true";
+    if(rentEnabled){
         listingType= "both";
         if(rentPrice== null){
             throw new ApiError(400, "Rent price is required");
@@ -51,6 +52,7 @@ const listBookForSale = asyncHandler( async(req, res)=>{
         imageUrls.push(uploadedImage.secure_url);
     }
 
+    const coverImage = imageUrls[0];
     const book = await Book.create({
         title,
         author, 
@@ -66,8 +68,10 @@ const listBookForSale = asyncHandler( async(req, res)=>{
         listingType,
         seller: req.user._id,
         images: imageUrls,
+        coverImage
     });
 
+    
     const createdBook = await Book.findById(book._id);
     if(!createdBook){
         throw new ApiError(500, "Something went wrong while listing a book");
@@ -103,7 +107,8 @@ const listBookForRent = asyncHandler( async(req, res)=>{
     }
 
     let listingType= "rent";
-    if(listForSale){
+    const rentEnabled = listForSale === "true";
+    if(rentEnabled){
         listingType= "both";
         if(sellPrice== null){
             throw new ApiError(400, "Selling price is required");
@@ -123,6 +128,8 @@ const listBookForRent = asyncHandler( async(req, res)=>{
         imageUrls.push(uploadedImage.secure_url);
     }
 
+    const coverImage = imageUrls[0];
+
     const book = await Book.create({
         title,
         author, 
@@ -137,6 +144,7 @@ const listBookForRent = asyncHandler( async(req, res)=>{
         semester,
         listingType,
         images: imageUrls,
+        coverImage,
         seller: req.user._id
     });
 
@@ -150,9 +158,68 @@ const listBookForRent = asyncHandler( async(req, res)=>{
     )
 })
 
+const getBooksForSale = asyncHandler(async (req, res) => {
 
+    const books = await Book.find({
+        listingType: {
+            $in: ["sell", "both"]
+        },
+        status: "available"
+    }).sort({
+        createdAt: -1
+    });
+
+    return res.status(200).json(
+        new ApiResponse(
+            200,
+            books,
+            "Books fetched successfully"
+        )
+    );
+});
+
+const getBooksForRent = asyncHandler(async (req, res) => {
+
+    const books = await Book.find({
+        listingType: {
+            $in: ["rent", "both"]
+        },
+        status: "available"
+    }).sort({
+        createdAt: -1
+    });
+
+    return res.status(200).json(
+        new ApiResponse(
+            200,
+            books,
+            "Books available for rent fetched successfully"
+        )
+    );
+});
+
+const getBookById = asyncHandler(async (req, res) => {
+
+    const { bookId } = req.params;
+    const book = await Book.findById(bookId);
+
+    if (!book) {
+        throw new ApiError(404, "Book not found");
+    }
+
+    return res.status(200).json(
+        new ApiResponse(
+            200,
+            book,
+            "Book fetched successfully"
+        )
+    );
+});
 
 export {
     listBookForRent,
-    listBookForSale
+    listBookForSale, 
+    getBooksForSale, 
+    getBooksForRent,
+    getBookById
 }

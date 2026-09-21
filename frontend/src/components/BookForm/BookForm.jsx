@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import "../../BookForm.css"
+import api from "../../api/axios.js"
 
 function BookForm({mode = "sell"}) {
 
@@ -18,9 +19,11 @@ function BookForm({mode = "sell"}) {
         listForRent: false,
         listForSale: false,
         images: [],
+        coverIndex: 0
     });
 
     const [previewImages, setPreviewImages] = useState([]);
+    const [coverIndex, setCoverIndex] = useState(0);
 
     const categories = [
         "Self Help",
@@ -65,34 +68,72 @@ function BookForm({mode = "sell"}) {
     };
 
     const handleImageChange = (e) => {
-        const files = Array.from(e.target.files);
+        const newFiles = Array.from(e.target.files);
+
+        // Check maximum limit
+        if (formData.images.length + newFiles.length > 5) {
+            alert("You can upload a maximum of 5 images.");
+            return;
+        }
+
+        // Merge previous and new images
+        const updatedImages = [...formData.images, ...newFiles];
         setFormData((prev) => ({
             ...prev,
-            images: files,
+            images: updatedImages,
         }));
 
-        const previews = files.map((file) =>
-            URL.createObjectURL(file)
-        );
-        setPreviewImages(previews);
+        const updatedPreviews = [
+            ...previewImages,
+            ...newFiles.map((file) => URL.createObjectURL(file))
+        ];
+
+        setPreviewImages(updatedPreviews);
+
+        // Reset input so the same image can be selected again if needed
+        e.target.value = "";
+
+        //if only one image is uploaded, make it a cover image 
+        if (formData.images.length === 0) {
+            setCoverIndex(0);
+        }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const data = new FormData();
-        Object.keys(formData).forEach((key) => {
-            if (key !== "images") {
-                data.append(key, formData[key]);
-            }
-        });
 
-        formData.images.forEach((image) => {
-            data.append("images", image);
-        });
+        try {
+            const data = new FormData();
+            Object.keys(formData).forEach((key) => {
+                if (key !== "images") {
+                    data.append(key, formData[key]);
+                }
+            });
+            formData.images.forEach((image) => {
+                data.append("images", image);
+            });
+            data.append("coverIndex", coverIndex);
+            const endpoint =
+                mode === "sell"
+                    ? "/books/sell"
+                    : "/books/rent";
 
-        console.log(formData);
+            const response = await api.post(
+                endpoint,
+                data
+            );
+
+            console.log(response.data);
+            alert("Book Listed Successfully!");
+
+        } catch (error) {
+            console.log(error);
+            alert(
+                error.response?.data?.message ||
+                "Something went wrong"
+            );
+        }
     };
-
 
     return(
         <div className="bookFormContainer">
@@ -482,6 +523,12 @@ function BookForm({mode = "sell"}) {
                         hidden
                     />
 
+                    {previewImages.length > 1 && (
+                        <p className="coverInstruction">
+                            ⭐ Click on any image below to make it the cover image.
+                        </p>
+                    )}
+
                     {previewImages.length > 0 && (
 
                         <div className="previewContainer">
@@ -490,7 +537,10 @@ function BookForm({mode = "sell"}) {
 
                                 <div
                                     key={index}
-                                    className="previewImageCard"
+                                    className={`previewImageCard ${
+                                        coverIndex === index ? "coverSelected" : ""
+                                    }`}
+                                    onClick={() => setCoverIndex(index)}
                                 >
 
                                     <img

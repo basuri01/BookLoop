@@ -296,13 +296,13 @@ input[type=number]{
 .previewContainer{
     margin-top:30px;
     display:grid;
-    grid-template-columns:
-    repeat(auto-fill,minmax(170px,1fr));
+    grid-template-columns: repeat(auto-fill,minmax(170px,1fr));
     gap:20px;
 }
 
 .previewImageCard{
     position:relative;
+    background-size: cover;
     border-radius:18px;
     overflow:hidden;
     background:white;
@@ -320,7 +320,17 @@ input[type=number]{
     object-fit:cover;
     display:block;
 }
-
+.coverInstruction{
+    margin-top:25px;
+    margin-bottom:18px;
+    font-size:15px;
+    color:#555;
+    font-weight:500;
+}
+.coverSelected{
+    border:3px solid #4F46E5;
+    transform:scale(1.02);
+}
 /* IMAGE COUNT */
 
 .imageCounter{
