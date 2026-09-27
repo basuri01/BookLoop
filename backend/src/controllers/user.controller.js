@@ -110,7 +110,7 @@ const loginUser= asyncHandler( async(req, res) => {
     const {accessToken, refreshToken}= await generateAccessAndRefreshTokens(user._id)
 
     const loggedInUser= await User.findById(user._id).
-    select("-password -refreshToken")
+    select("-password -refreshTokens")
 
     const options= {
         httpOnly: true, 
@@ -131,7 +131,7 @@ const loginUser= asyncHandler( async(req, res) => {
 
 const logoutUser= asyncHandler( async(req, res) => {
     await User.findByIdAndUpdate(req.user._id, {
-        $unset: {refreshToken: 1}
+        $unset: {refreshTokens: 1}
     },
     {
         new: true
@@ -153,11 +153,15 @@ const logoutUser= asyncHandler( async(req, res) => {
 
 })  
 
-const getCurrentUser= asyncHandler( async(req, res) => {
-    return res
-    .status(200)
-    .json(200, req.user, "current user fetched successfully")
-})
+const getCurrentUser = asyncHandler(async (req, res) => {
+    return res.status(200).json(
+        new ApiResponse(
+            200,
+            req.user,
+            "Current user fetched successfully"
+        )
+    );
+});
 
 
 

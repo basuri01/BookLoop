@@ -1,0 +1,80 @@
+.wishlistPage {
+    padding: 30px 5%;
+}
+
+.wishlistHeader {
+    margin-bottom: 30px;
+}
+
+.wishlistHeader h1 {
+    margin-bottom: 5px;
+}
+
+.wishlistHeader p {
+    color: #666;
+}
+
+.wishlistGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 25px;
+}
+
+.wishlistCard {
+    position: relative;
+    background: white;
+    border-radius: 10px;
+    padding: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.wishlistImageContainer {
+    height: 280px;
+    cursor: pointer;
+}
+
+.wishlistImageContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.wishlistInfo {
+    padding-top: 12px;
+}
+
+.wishlistInfo h3 {
+    margin: 0 0 5px;
+}
+
+.wishlistInfo p {
+    margin: 0 0 8px;
+    color: #666;
+}
+
+.removeWishlistButton {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    border: none;
+    background: white;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.removeWishlistButton:hover {
+    color: red;
+}
+
+.wishlistMessage,
+.emptyWishlist {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.emptyWishlistIcon {
+    font-size: 60px;
+    margin-bottom: 15px;
+}

@@ -1,0 +1,141 @@
+.checkoutPage{
+    padding:40px 6%;
+    min-height:80vh;
+}
+
+.checkoutPage > h1{
+    margin-bottom:40px;
+}
+
+.checkoutContent{
+    display:flex;
+    gap:40px;
+    align-items:flex-start;
+}
+
+.checkoutItems{
+    flex:1;
+    min-width:0;
+}
+
+.checkoutItems > h2{
+    margin-bottom:25px;
+}
+
+.checkoutItem{
+    width:100%;
+    box-sizing:border-box;
+    display:flex;
+    align-items:center;
+    gap:25px;
+    padding:20px;
+    margin-bottom:20px;
+    background-color:#fffdf8;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+
+.checkoutItemImage{
+    width:120px;
+    height:160px;
+    object-fit:cover;
+    border-radius:5px;
+    flex-shrink:0;
+}
+
+.checkoutItemInfo{
+    flex:1;
+}
+
+.checkoutItemInfo h3{
+    margin:0 0 8px;
+    font-size:1.4rem;
+}
+
+.checkoutItemInfo p{
+    margin:5px 0 12px;
+}
+
+.checkoutType{
+    display:inline-block;
+    padding:5px 12px;
+    border-radius:15px;
+    font-size:0.9rem;
+}
+
+.buyType{
+    background-color:#eee;
+}
+
+.rentType{
+    background-color:#f3df9b;
+}
+
+.checkoutItemPrice{
+    font-size:1.2rem;
+    white-space:nowrap;
+}
+
+.checkoutSummary{
+    width:320px;
+    box-sizing:border-box;
+    padding:30px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    background-color:#fffdf8;
+    flex-shrink:0;
+}
+
+.checkoutSummary h2{
+    margin-top:0;
+    margin-bottom:25px;
+}
+
+.summaryRow{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:15px 0;
+}
+
+.placeOrderButton{
+    width:100%;
+    padding:14px;
+    margin-top:20px;
+    border:none;
+    border-radius:6px;
+    background-color:darkgoldenrod;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.placeOrderButton:hover{
+    background-color:darkorange;
+}
+
+.checkoutMessage{
+    text-align:center;
+    padding:60px 20px;
+}
+
+.checkoutMessage button{
+    padding:12px 25px;
+    border:none;
+    border-radius:6px;
+    background-color:darkgoldenrod;
+    cursor:pointer;
+}
+
+@media(max-width:900px){
+    .checkoutContent{
+        flex-direction:column;
+    }
+
+    .checkoutItems{
+        width:100%;
+    }
+
+    .checkoutSummary{
+        width:100%;
+    }
+}

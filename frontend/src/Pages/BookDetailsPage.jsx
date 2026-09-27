@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar.jsx";
 import api from "../api/axios.js";
 import "../BookDetailsPage.css";
+import { useCart } from "../context/CartContext.jsx";
+import { useWishlist } from "../context/WishlistContext.jsx";
 
 function BookDetailsPage() {
     const { bookId } = useParams();
     const [searchParams] = useSearchParams();
+    const navigate = useNavigate();
     const isRentMode = searchParams.get("mode") === "rent";
-
     const [book, setBook] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
+    const { addToCart, isInCart } = useCart();
+    const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
 
     useEffect(() => {
         const getBook = async () => {
@@ -26,9 +30,42 @@ function BookDetailsPage() {
                 setLoading(false);
             }
         };
-
         getBook();
     }, [bookId]);
+
+    const handleAddToCart = async () => {
+        const type = isRentMode ? "rent" : "buy";
+        const result = await addToCart(
+            book._id,
+            type
+        );
+        if (!result.success) {
+            alert(result.message);
+        }
+    };
+
+    const handleBuyNow = async () => {
+        if (alreadyInCart) {
+            navigate("/checkout");
+            return;
+        }
+
+        const result = await addToCart(book._id, "buy");
+
+        if (!result.success) {
+            alert(result.message);
+            return;
+        }
+
+        navigate("/checkout");
+    };
+
+    const alreadyInCart = book
+        ? isInCart(
+            book._id,
+            isRentMode ? "rent" : "buy"
+        )
+        : false;
 
     if (loading) {
         return (
@@ -51,6 +88,20 @@ function BookDetailsPage() {
             </>
         );
     }
+
+    const alreadyInWishlist = book
+    ? isInWishlist(book._id)
+    : false;
+
+    const handleWishlist = async () => {
+        const result = alreadyInWishlist
+            ? await removeFromWishlist(book._id)
+            : await addToWishlist(book._id);
+
+        if (!result.success) {
+            alert(result.message);
+        }
+    };
 
     return (
         <>
@@ -120,21 +171,41 @@ function BookDetailsPage() {
                         </div>
 
                         <div className="bookActions">
-                            <button className="wishlistButton">
-                                ♡ Wishlist
+                            <button
+                                className={`wishlistButton ${alreadyInWishlist ? "addedToWishlist" : ""}`}
+                                onClick={handleWishlist}
+                            >
+                                {alreadyInWishlist ? "♥ Wishlisted" : "♡ Wishlist"}
                             </button>
 
                             {isRentMode ? (
-                                <button className="buyButton">
-                                    Rent Book
+                                <button
+                                    className={`cartButton ${
+                                        alreadyInCart ? "addedToCart" : ""
+                                    }`}
+                                    onClick={handleAddToCart}
+                                    disabled={alreadyInCart}
+                                >
+                                    {alreadyInCart
+                                        ? "✓ Added to Cart"
+                                        : "🛒 Add to Cart"}
                                 </button>
                             ) : (
                                 <>
-                                    <button className="cartButton">
-                                        🛒 Add to Cart
+                                    <button
+                                        className={`cartButton ${alreadyInCart ? "addedToCart" : ""}`}
+                                        onClick={handleAddToCart}
+                                        disabled={alreadyInCart}
+                                    >
+                                        {alreadyInCart
+                                            ? "✓ Added to Cart"
+                                            : "🛒 Add to Cart"}
                                     </button>
 
-                                    <button className="buyButton">
+                                    <button
+                                        className="buyButton"
+                                        onClick={handleBuyNow}
+                                    >
                                         Buy Now
                                     </button>
                                 </>

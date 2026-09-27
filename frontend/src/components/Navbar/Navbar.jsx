@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import books from '../books';
 import { useAuth } from '../../context/AuthContext';
+import { useCart } from '../../context/CartContext';
+import { useWishlist } from "../../context/WishlistContext.jsx";
 
 function Navbar() {
     const[showCategories, setShowCategories]= useState(false);
@@ -12,6 +14,10 @@ function Navbar() {
     const[searchTerm, setSearchTerm]= useState("");
     const navigate= useNavigate();
     const { user } = useAuth();
+    const { cart } = useCart();
+    const { wishlist } = useWishlist();
+    const cartCount = cart?.items?.length || 0;
+    const wishlistCount = wishlist?.books?.length || 0;
     console.log(user);
     const categories = [
         "Academic Books",
@@ -99,21 +105,30 @@ function Navbar() {
                     </div>
                 </div>
                 <div className="nav-div3">
-                    <i className="fa-solid fa-cart-shopping" id="cart"></i>
-                    
-                    <i className="fa-regular fa-heart" id="wishlist"></i>
-                    
+                    <Link to="/cart" className="navIcon">
+                        <i className="fa-solid fa-cart-shopping" id="cart"></i>
+                        {cartCount > 0 && (
+                            <span className="navCount">{cartCount}</span>
+                        )}
+                    </Link>
+
+                    <Link to="/wishlist" className="navIcon">
+                        <i className="fa-regular fa-heart" id="wishlist"></i>
+                        {wishlistCount > 0 && (
+                            <span className="navCount">{wishlistCount}</span>
+                        )}
+                    </Link>
+
                     <Link to="/user" className="userProfileLink">
-                        {user? (
+                        {user ? (
                             <>
-                            <p>Hi,</p>
-                            <p>{user.fullname.split(" ")[0]}</p>
+                                <p>Hi,</p>
+                                <p>{user.fullname.split(" ")[0]}</p>
                             </>
                         ) : (
                             <i className="fa-solid fa-user" id="user"></i>
                         )}
                     </Link>
-                    
                 </div>
             </div>
         </>

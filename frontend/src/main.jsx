@@ -3,6 +3,8 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
 import './index.css'
 import { AuthProvider } from './context/AuthContext.jsx'
+import { CartProvider } from "./context/CartContext.jsx";
+import { WishlistProvider } from "./context/WishlistContext.jsx";
 import App from './App.jsx'
 import Home from './Pages/Home.jsx'
 import CategoryPage from './Pages/CategoryPage.jsx'
@@ -16,6 +18,12 @@ import RentBookPage from './Pages/RentBookPage.jsx'
 import RentMarketplacePage from "./Pages/RentMarketplacePage.jsx";
 import BuyBookPage from './Pages/BuyBookPage.jsx'
 import BookDetailsPage from './Pages/BookDetailsPage.jsx'
+import CartPage from "./Pages/CartPage.jsx";
+import CheckoutPage from "./Pages/CheckoutPage.jsx";
+import OrderDetailsPage from "./Pages/OrderDetailsPage.jsx";
+import WishlistPage from "./Pages/WishlistPage.jsx";
+import RentalsPage from "./Pages/RentalsPage.jsx";
+
 
 const router= createBrowserRouter(
   createRoutesFromElements(
@@ -32,6 +40,11 @@ const router= createBrowserRouter(
       <Route path='rent/form' element={<RentBookPage/>}/>
       <Route path='buy' element={<BuyBookPage/>}/>
       <Route path='book/:bookId' element={<BookDetailsPage/>}/>
+      <Route path="cart" element={<CartPage />} />
+      <Route path="checkout" element={<CheckoutPage />} />
+      <Route path="order/:orderId" element={<OrderDetailsPage />} />
+      <Route path="wishlist" element={<WishlistPage />} />
+      <Route path="rentals" element={<RentalsPage />} />
     </Route>
   )
 )
@@ -39,7 +52,11 @@ const router= createBrowserRouter(
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
-        <RouterProvider router={router} />
+      <CartProvider>
+        <WishlistProvider>
+          <RouterProvider router={router} />
+        </WishlistProvider>
+      </CartProvider>
     </AuthProvider>
   </StrictMode>,
 )
